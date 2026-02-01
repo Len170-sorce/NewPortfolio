@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './Navigation.css'
 
 interface NavigationProps {
@@ -6,17 +7,31 @@ interface NavigationProps {
 }
 
 export default function Navigation({ activeSection, setActiveSection }: NavigationProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId)
     const element = document.getElementById(sectionId)
     element?.scrollIntoView({ behavior: 'smooth' })
+    setIsMenuOpen(false)
   }
 
   return (
     <nav className="navigation">
       <div className="nav-container">
         <img src="/src/assets/MLT-BG.png" alt="MLT Logo" className="logo" />
-        <ul className="nav-links">
+        
+        <button 
+          className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <li>
             <a
               href="#home"
