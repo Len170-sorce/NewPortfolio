@@ -44,7 +44,7 @@ export default function Projects() {
       title: 'EduConnect',
       description: 'Built for fragrance enthusiasts, Parfum Perspective offers a seamless online experience for discovering and purchasing perfumes through a modern e-commerce platform.',
       technologies: ['HTML', 'CSS', 'JavaScript', 'Firebase'],
-      image: '🖥️',
+      image: '/src/assets/Educonnect-MK.png',
     },
     {
       title: 'Baranggay Management System',
@@ -56,13 +56,13 @@ export default function Projects() {
       title: 'Parfum Perspective',
       description: 'Built for fragrance enthusiasts, Parfum Perspective offers a seamless online experience for discovering and purchasing perfumes through a modern e-commerce platform.',
       technologies: ['HTML', 'CSS', 'JavaScript'],
-      image: '🐍',
+      image: '/src/assets/Parfum-MK.png',
     },
     {
       title: 'Genshin Log In UI',
       description: 'A Genshin Impact-inspired login UI designed in Figma, featuring a clean, immersive interface with character-themed visuals and intuitive input fields for a seamless user login experience.',
       technologies: ['Figma'],
-      image: '📚',
+      image: '/src/assets/Genshin-MK.jpg',
     },
     {
       title: 'Weather Forecast App',
@@ -89,7 +89,7 @@ export default function Projects() {
         {projects.map((project, index) => (
           <div key={index} className="project-card" style={{ animationDelay: `${index * 0.2}s` }}>
             <div className="project-image">
-              <div className="image-placeholder">{project.image}</div>
+              <img src={project.image} alt={project.title} className="project-img" />
               <div className="project-overlay">
                 <button className="view-btn">View Project</button>
               </div>
