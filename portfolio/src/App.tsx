@@ -6,6 +6,7 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Navigation from './components/Navigation'
+import SeasonalEffects from './components/SeasonalEffects'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <div className="app">
+      <SeasonalEffects />
       <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
       <main>
         <section id="home">
