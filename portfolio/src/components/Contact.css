@@ -4,6 +4,80 @@
   margin: 0 auto;
   padding: 0 2rem;
   animation: fadeInUp 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Geometric Shapes Background */
+@keyframes floatShapeContact {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(30px) translateX(-30px);
+  }
+}
+
+@keyframes rotateShapeContact {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.contact-shape {
+  position: absolute;
+  pointer-events: none;
+}
+
+.contact-shape.circle-1 {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, #64b5f6, transparent);
+  border-radius: 50%;
+  top: 20%;
+  left: 5%;
+  animation: floatShapeContact 10s ease-in-out infinite;
+  opacity: 0.08;
+}
+
+.contact-shape.circle-2 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #3d7ab8, transparent);
+  border-radius: 50%;
+  bottom: 15%;
+  right: 5%;
+  animation: floatShapeContact 12s ease-in-out infinite;
+  opacity: 0.08;
+}
+
+.contact-shape.square {
+  width: 180px;
+  height: 180px;
+  background: rgba(100, 181, 246, 0.2);
+  top: 40%;
+  right: 10%;
+  animation: rotateShapeContact 20s linear infinite;
+  opacity: 0.06;
+}
+
+@media (max-width: 768px) {
+  .contact-shape {
+    opacity: 0.04;
+  }
+
+  .contact-shape.square {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-shape {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {

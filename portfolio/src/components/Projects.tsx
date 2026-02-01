@@ -80,6 +80,11 @@ export default function Projects() {
 
   return (
     <div ref={containerRef} className={`projects-container scroll-animate ${containerVisible ? 'is-visible' : ''}`}>
+      {/* Geometric Shapes */}
+      <div className="projects-shape circle-1"></div>
+      <div className="projects-shape circle-2"></div>
+      <div className="projects-shape triangle"></div>
+
       <div className="section-header">
         <h2>My Projects</h2>
         <p>Some of my recent work</p>

@@ -59,6 +59,11 @@ export default function About() {
 
   return (
     <div ref={containerRef} className={`about-container scroll-animate ${containerVisible ? 'is-visible' : ''}`}>
+      {/* Geometric Shapes */}
+      <div className="about-shape circle-1"></div>
+      <div className="about-shape square-1"></div>
+      <div className="about-shape circle-2"></div>
+
       <div className="section-header">
         <h2>About Me</h2>
         <p>Get to know more about my background, education, and passion for technology</p>

@@ -57,6 +57,11 @@ export default function Contact() {
 
   return (
     <div ref={containerRef} className={`contact-container scroll-animate ${containerVisible ? 'is-visible' : ''}`}>
+      {/* Geometric Shapes */}
+      <div className="contact-shape circle-1"></div>
+      <div className="contact-shape circle-2"></div>
+      <div className="contact-shape square"></div>
+
       <div className="section-header">
         <h2>Get In Touch</h2>
         <p>Have a question or ready to collaborate? I'd love to hear from you.</p>

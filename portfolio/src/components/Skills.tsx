@@ -59,6 +59,11 @@ export default function Skills() {
 
   return (
     <div ref={containerRef} className={`skills-container scroll-animate ${containerVisible ? 'is-visible' : ''}`}>
+      {/* Geometric Shapes */}
+      <div className="skills-shape circle-1"></div>
+      <div className="skills-shape circle-2"></div>
+      <div className="skills-shape square-1"></div>
+
       <div className="section-header">
         <h2>Technical Skills</h2>
         <p>Programming languages and technologies I work with</p>

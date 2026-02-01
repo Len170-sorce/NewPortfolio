@@ -4,17 +4,77 @@
   margin: 0 auto;
   padding: 0 2rem;
   animation: fadeInUp 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Geometric Shapes Background */
+@keyframes floatShape {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-30px) translateX(20px);
+  }
+}
+
+@keyframes rotateShapeAbout {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about-shape {
+  position: absolute;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.about-shape.circle-1 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, #64b5f6, transparent);
+  border-radius: 50%;
+  top: 5%;
+  right: 5%;
+  animation: floatShape 8s ease-in-out infinite;
+}
+
+.about-shape.square-1 {
+  width: 150px;
+  height: 150px;
+  background: rgba(100, 181, 246, 0.3);
+  top: 40%;
+  left: -50px;
+  animation: rotateShapeAbout 12s linear infinite;
+}
+
+.about-shape.circle-2 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #3d7ab8, transparent);
+  border-radius: 50%;
+  bottom: 10%;
+  right: 10%;
+  animation: floatShape 10s ease-in-out infinite;
 }
 
 @media (max-width: 768px) {
-  .about-container {
-    padding: 0 1.5rem;
+  .about-shape {
+    opacity: 0.05;
+  }
+
+  .about-shape.square-1 {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .about-container {
-    padding: 0 1rem;
+  .about-shape {
+    display: none;
   }
 }
 

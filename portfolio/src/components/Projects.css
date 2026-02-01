@@ -4,6 +4,82 @@
   margin: 0 auto;
   padding: 0 2rem;
   animation: fadeInUp 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Geometric Shapes Background */
+@keyframes floatShapeProjects {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+}
+
+@keyframes orbitShape {
+  from {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}
+
+.projects-shape {
+  position: absolute;
+  pointer-events: none;
+}
+
+.projects-shape.circle-1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #64b5f6, transparent);
+  border-radius: 50%;
+  top: 10%;
+  left: -80px;
+  animation: floatShapeProjects 10s ease-in-out infinite;
+  opacity: 0.08;
+}
+
+.projects-shape.circle-2 {
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, #3d7ab8, transparent);
+  border-radius: 50%;
+  bottom: 5%;
+  right: 5%;
+  animation: floatShapeProjects 12s ease-in-out infinite;
+  opacity: 0.08;
+}
+
+.projects-shape.triangle {
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 150px solid rgba(100, 181, 246, 0.15);
+  top: 30%;
+  right: 10%;
+  animation: orbitShape 20s linear infinite;
+  opacity: 0.06;
+}
+
+@media (max-width: 768px) {
+  .projects-shape {
+    opacity: 0.04;
+  }
+
+  .projects-shape.triangle {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-shape {
+    display: none;
+  }
 }
 
 .projects-grid {

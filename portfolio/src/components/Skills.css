@@ -4,17 +4,89 @@
   margin: 0 auto;
   padding: 0 2rem;
   animation: fadeInUp 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Geometric Shapes Background */
+@keyframes floatShapeSkills {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(40px) translateX(-20px);
+  }
+}
+
+@keyframes pulseShape {
+  0%, 100% {
+    opacity: 0.08;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.12;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotateShapeAbout {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.skills-shape {
+  position: absolute;
+  pointer-events: none;
+}
+
+.skills-shape.circle-1 {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, #64b5f6, transparent);
+  border-radius: 50%;
+  top: -100px;
+  left: 10%;
+  animation: floatShapeSkills 12s ease-in-out infinite;
+  opacity: 0.08;
+}
+
+.skills-shape.circle-2 {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #3d7ab8, transparent);
+  border-radius: 50%;
+  bottom: -50px;
+  right: 5%;
+  animation: pulseShape 8s ease-in-out infinite;
+}
+
+.skills-shape.square-1 {
+  width: 180px;
+  height: 180px;
+  background: rgba(100, 181, 246, 0.2);
+  top: 50%;
+  right: 5%;
+  animation: rotateShapeAbout 15s linear infinite;
+  opacity: 0.06;
 }
 
 @media (max-width: 768px) {
-  .skills-container {
-    padding: 0 1.5rem;
+  .skills-shape {
+    opacity: 0.04;
+  }
+
+  .skills-shape.square-1 {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .skills-container {
-    padding: 0 1rem;
+  .skills-shape {
+    display: none;
   }
 }
 
