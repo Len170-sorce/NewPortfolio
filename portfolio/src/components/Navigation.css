@@ -56,15 +56,21 @@
   font-weight: 400;
   font-size: 0.95rem;
   padding: 0.25rem 0;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 0.5rem;
 }
 
 .nav-links a:hover {
   color: var(--accent-blue);
+  border-bottom: 2px solid var(--accent-blue);
+  padding-bottom: calc(0.5rem - 2px);
 }
 
 .nav-links a.active {
   color: var(--accent-blue);
+  border-bottom: 2px solid var(--accent-blue);
+  padding-bottom: calc(0.5rem - 2px);
 }
 
 @media (max-width: 1024px) {
