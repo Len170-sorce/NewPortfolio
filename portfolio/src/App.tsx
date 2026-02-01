@@ -36,7 +36,7 @@ function App() {
       <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
       <main>
         <section id="home">
-          <Hero setActiveSection={setActiveSection} />
+          <Hero />
         </section>
         <section id="about">
           <About />

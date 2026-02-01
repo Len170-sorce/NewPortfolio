@@ -527,3 +527,257 @@
   object-fit: cover;
   border-radius: 50%;
 }
+/* Spider Web and Spider */
+.spider-web {
+  position: fixed;
+  top: 20px;
+  right: 50px;
+  width: 100px;
+  height: 300px;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+
+.web-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  transition: transform 0.05s linear;
+}
+
+.web-string {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: calc(220px + var(--web-stretch, 0px));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(200, 200, 200, 0.4));
+  transform: translateX(-1px);
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+  transition: height 0.05s ease-out;
+}
+
+.spider {
+  position: absolute;
+  top: calc(220px + var(--web-stretch, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 24px;
+  cursor: pointer;
+  transition: top 0.05s ease-out;
+}
+
+/* Spider Head (Cephalothorax) */
+.spider-head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 10px;
+  height: 8px;
+  background: #0a0a0a;
+  border-radius: 50% 50% 40% 40%;
+  transform: translateX(-50%);
+  box-shadow: 
+    0 0 3px rgba(0, 0, 0, 0.8),
+    inset -1px -1px 2px rgba(255, 100, 100, 0.3);
+}
+
+/* Spider Abdomen */
+.spider-abdomen {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  width: 14px;
+  height: 16px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #2a1a1a 100%);
+  border-radius: 50% 50% 45% 45%;
+  transform: translateX(-50%);
+  box-shadow: 
+    0 0 4px rgba(0, 0, 0, 0.9),
+    inset -1px -1px 3px rgba(255, 100, 100, 0.2);
+  animation: spiderBreathing 2s ease-in-out infinite;
+}
+
+@keyframes spiderBreathing {
+  0%, 100% {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.9), inset -1px -1px 3px rgba(255, 100, 100, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 6px rgba(255, 100, 100, 0.3), inset -1px -1px 3px rgba(255, 100, 100, 0.3);
+  }
+}
+
+/* Spider Eyes */
+.spider-eye {
+  position: absolute;
+  top: 2px;
+  width: 2px;
+  height: 2px;
+  background: #ff6666;
+  border-radius: 50%;
+  box-shadow: 0 0 2px #ff6666;
+  animation: eyeGlow 2s ease-in-out infinite;
+}
+
+.eye-left {
+  left: 2px;
+}
+
+.eye-right {
+  right: 2px;
+}
+
+@keyframes eyeGlow {
+  0%, 100% {
+    box-shadow: 0 0 2px #ff6666;
+  }
+  50% {
+    box-shadow: 0 0 4px #ff8888, 0 0 6px #ff6666;
+  }
+}
+
+/* Spider Legs */
+.spider-leg {
+  position: absolute;
+  background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
+  transform-origin: center top;
+  height: 12px;
+  width: 1.5px;
+  border-radius: 1px;
+}
+
+/* Front Left Legs */
+.leg-fl1 {
+  top: 4px;
+  left: 2px;
+  transform: rotate(-45deg);
+  animation: legWave 0.8s ease-in-out infinite;
+}
+
+.leg-fl2 {
+  top: 10px;
+  left: 1px;
+  transform: rotate(-35deg);
+  animation: legWave 0.8s ease-in-out infinite 0.1s;
+}
+
+/* Front Right Legs */
+.leg-fr1 {
+  top: 4px;
+  right: 2px;
+  transform: scaleX(-1) rotate(-45deg);
+  animation: legWave 0.8s ease-in-out infinite 0.05s;
+}
+
+.leg-fr2 {
+  top: 10px;
+  right: 1px;
+  transform: scaleX(-1) rotate(-35deg);
+  animation: legWave 0.8s ease-in-out infinite 0.15s;
+}
+
+/* Back Left Legs */
+.leg-bl1 {
+  top: 14px;
+  left: 1px;
+  transform: rotate(-65deg);
+  animation: legWave 0.8s ease-in-out infinite 0.2s;
+}
+
+.leg-bl2 {
+  top: 19px;
+  left: 2px;
+  transform: rotate(-55deg);
+  animation: legWave 0.8s ease-in-out infinite 0.25s;
+}
+
+/* Back Right Legs */
+.leg-br1 {
+  top: 14px;
+  right: 1px;
+  transform: scaleX(-1) rotate(-65deg);
+  animation: legWave 0.8s ease-in-out infinite 0.1s;
+}
+
+.leg-br2 {
+  top: 19px;
+  right: 2px;
+  transform: scaleX(-1) rotate(-55deg);
+  animation: legWave 0.8s ease-in-out infinite 0.2s;
+}
+
+@keyframes legWave {
+  0%, 100% {
+    transform: rotate(var(--rotation)) scaleY(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: rotate(var(--rotation)) scaleY(1.1);
+    opacity: 1;
+  }
+}
+
+.leg-fl1 { --rotation: -45deg; }
+.leg-fl2 { --rotation: -35deg; }
+.leg-fr1 { --rotation: -45deg; transform: scaleX(-1); }
+.leg-fr2 { --rotation: -35deg; transform: scaleX(-1); }
+.leg-bl1 { --rotation: -65deg; }
+.leg-bl2 { --rotation: -55deg; }
+.leg-br1 { --rotation: -65deg; transform: scaleX(-1); }
+.leg-br2 { --rotation: -55deg; transform: scaleX(-1); }
+
+@media (max-width: 768px) {
+  .spider-web {
+    right: 20px;
+    top: 20px;
+    height: 250px;
+  }
+
+  .web-string {
+    height: 180px;
+  }
+
+  .spider {
+    top: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .spider-web {
+    right: 10px;
+    top: 10px;
+    width: 70px;
+    height: 200px;
+  }
+
+  .web-string {
+    height: 150px;
+  }
+
+  .spider {
+    top: 150px;
+    width: 16px;
+    height: 20px;
+  }
+
+  .spider-head {
+    width: 8px;
+    height: 6px;
+  }
+
+  .spider-abdomen {
+    width: 12px;
+    height: 14px;
+  }
+
+  .spider-leg {
+    height: 10px;
+    width: 1px;
+  }
+}

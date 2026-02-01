@@ -1,7 +1,127 @@
+import { useState, useEffect, useRef } from 'react';
 import LenImg from "../assets/Len.png";
 import './Hero.css'
 
 export default function Hero() {
+  const [spiderAngle, setSpiderAngle] = useState(0);
+  const [webStretch, setWebStretch] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  
+  const angleRef = useRef(0);
+  const velocityRef = useRef(0);
+  const animationRef = useRef<number | null>(null);
+  const isAnimatingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartYRef = useRef(0);
+  const webAnchorRef = useRef({ x: 0, y: 0 });
+
+  const simulatePhysics = () => {
+    // Restore force pulling back to center
+    const restoreForce = -angleRef.current * 0.08;
+    
+    // Apply damping
+    velocityRef.current *= 0.95;
+    
+    // Add restore force to velocity
+    velocityRef.current += restoreForce;
+    
+    // Update angle
+    angleRef.current += velocityRef.current;
+    
+    // Update the state
+    setSpiderAngle(angleRef.current);
+    
+    // Check if we should stop
+    if (Math.abs(angleRef.current) < 0.05 && Math.abs(velocityRef.current) < 0.01) {
+      angleRef.current = 0;
+      velocityRef.current = 0;
+      setSpiderAngle(0);
+      setWebStretch(0);
+      isAnimatingRef.current = false;
+      return;
+    }
+    
+    animationRef.current = requestAnimationFrame(simulatePhysics);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    dragStartXRef.current = e.clientX;
+    dragStartYRef.current = e.clientY;
+    
+    // Get web anchor position (top-right of screen, roughly)
+    const webElement = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    webAnchorRef.current = {
+      x: webElement.left + webElement.width / 2,
+      y: webElement.top + 50
+    };
+    
+    velocityRef.current = 0;
+    
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      isAnimatingRef.current = false;
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+
+    const currentX = e.clientX;
+    const currentY = e.clientY;
+    
+    // Calculate distance from anchor point to cursor
+    const deltaX = currentX - webAnchorRef.current.x;
+    const deltaY = currentY - webAnchorRef.current.y;
+    
+    // Calculate angle based on X position
+    const dragAngle = (deltaX) * -0.3;
+    angleRef.current = dragAngle;
+    
+    // Calculate total stretch distance from anchor
+    const totalDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    const baseDistance = 220;
+    const stretch = Math.max(0, totalDistance - baseDistance);
+    
+    setWebStretch(stretch);
+    setSpiderAngle(dragAngle);
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    
+    // Calculate velocity from drag angle
+    velocityRef.current = angleRef.current * 0.1;
+    
+    // Start physics simulation
+    isAnimatingRef.current = true;
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+    animationRef.current = requestAnimationFrame(simulatePhysics);
+  };
+
+  useEffect(() => {
+    if (isDragging) {
+      window.addEventListener('mousemove', handleMouseMove as any);
+      window.addEventListener('mouseup', handleMouseUp);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove as any);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging]);
+
+  useEffect(() => {
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="hero">
       {/* Animated Background Objects */}
@@ -55,6 +175,40 @@ export default function Hero() {
                 className="profile-image"
              />
             </div>
+        </div>
+      </div>
+
+      {/* Spider with Web */}
+      <div className="spider-web" onMouseDown={handleMouseDown}>
+        <div 
+          className="web-container" 
+          style={{ 
+            transform: `rotate(${spiderAngle}deg)`,
+            '--web-stretch': `${webStretch}px`
+          } as React.CSSProperties & { '--web-stretch': string }}
+        >
+          <div className="web-string"></div>
+          <div className="spider">
+            {/* Head/Cephalothorax */}
+            <div className="spider-head"></div>
+            {/* Abdomen */}
+            <div className="spider-abdomen"></div>
+            {/* Eyes */}
+            <div className="spider-eye eye-left"></div>
+            <div className="spider-eye eye-right"></div>
+            {/* Front Left Legs */}
+            <div className="spider-leg leg-fl1"></div>
+            <div className="spider-leg leg-fl2"></div>
+            {/* Front Right Legs */}
+            <div className="spider-leg leg-fr1"></div>
+            <div className="spider-leg leg-fr2"></div>
+            {/* Back Left Legs */}
+            <div className="spider-leg leg-bl1"></div>
+            <div className="spider-leg leg-bl2"></div>
+            {/* Back Right Legs */}
+            <div className="spider-leg leg-br1"></div>
+            <div className="spider-leg leg-br2"></div>
+          </div>
         </div>
       </div>
     </div>

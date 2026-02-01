@@ -65,10 +65,10 @@ export default function Projects() {
       image: '/src/assets/Genshin-MK.jpg',
     },
     {
-      title: 'Weather Forecast App',
-      description: 'A modern weather application with real-time data integration from weather APIs. Displays hourly forecasts, weather alerts, and provides location-based recommendations.',
-      technologies: ['React', 'JavaScript', 'REST API', 'CSS'],
-      image: '🌤️',
+      title: 'My Portfolio',
+      description: 'A modern and responsive portfolio built with React and TypeScript, showcasing my projects, skills, and experience with a focus on clean UI, performance, and maintainable code.',
+      technologies: ['React', 'TypeScript', 'HTML', 'CSS', 'JavaScript'],
+      image: '/src/assets/Port-MK.png',
     },
     {
       title: 'Task Management System',
