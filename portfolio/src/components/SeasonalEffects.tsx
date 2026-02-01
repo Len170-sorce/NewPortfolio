@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import './SeasonalEffects.css';
 
 interface SeasonConfig {
-  name: 'winter' | 'spring' | 'summer' | 'autumn';
+  name: 'winter' | 'spring' | 'summer' | 'autumn' | 'valentines' | 'halloween' | 'christmas' | 'easter' | 'newyear';
   particleCount: number;
   particleType: string;
   description: string;
@@ -10,39 +10,77 @@ interface SeasonConfig {
 
 export default function SeasonalEffects() {
   const seasonConfig = useMemo(() => {
-    const month = new Date().getMonth();
+    const now = new Date();
+    const month = now.getMonth();
+    const date = now.getDate();
 
-    if (month === 11 || month === 0 || month === 1) {
-      // December, January, February - Winter
+    // Special Events/Holidays
+    if (month === 1 && date >= 1 && date <= 28) {
+      // February - Valentine's Day
       return {
-        name: 'winter',
+        name: 'valentines',
+        particleCount: 35,
+        particleType: 'heart',
+        description: 'Valentine\'s Day'
+      } as SeasonConfig;
+    } else if (month === 11 && date >= 15) {
+      // December 15-31 - Christmas
+      return {
+        name: 'christmas',
         particleCount: 50,
         particleType: 'snowflake',
-        description: 'winter'
+        description: 'Christmas'
+      } as SeasonConfig;
+    } else if (month === 10 && date >= 20) {
+      // October 20-31 - Halloween
+      return {
+        name: 'halloween',
+        particleCount: 40,
+        particleType: 'ghost',
+        description: 'Halloween'
+      } as SeasonConfig;
+    } else if (month === 0 && date <= 7) {
+      // January 1-7 - New Year
+      return {
+        name: 'newyear',
+        particleCount: 30,
+        particleType: 'confetti',
+        description: 'New Year'
+      } as SeasonConfig;
+    } else if (month === 11 && date <= 14) {
+      // December 1-14 - Early Christmas
+      return {
+        name: 'christmas',
+        particleCount: 40,
+        particleType: 'snowflake',
+        description: 'Christmas Season'
+      } as SeasonConfig;
+    }
+
+    // Regular Seasons
+    if (month === 11 || month === 0 || month === 1) {
+      // December, January, February - Cool Dry Season
+      return {
+        name: 'winter',
+        particleCount: 30,
+        particleType: 'firefly',
+        description: 'Cool Dry Season'
       } as SeasonConfig;
     } else if (month >= 2 && month <= 4) {
-      // March, April, May - Spring
-      return {
-        name: 'spring',
-        particleCount: 30,
-        particleType: 'petal',
-        description: 'spring'
-      } as SeasonConfig;
-    } else if (month >= 5 && month <= 7) {
-      // June, July, August - Summer
+      // March, April, May - Hot Dry Season
       return {
         name: 'summer',
-        particleCount: 20,
+        particleCount: 25,
         particleType: 'firefly',
-        description: 'summer'
+        description: 'Hot Dry Season'
       } as SeasonConfig;
     } else {
-      // September, October, November - Autumn
+      // June - November - Rainy Season
       return {
         name: 'autumn',
-        particleCount: 40,
+        particleCount: 45,
         particleType: 'leaf',
-        description: 'autumn'
+        description: 'Rainy Season'
       } as SeasonConfig;
     }
   }, []);
@@ -71,9 +109,11 @@ export default function SeasonalEffects() {
           }}
         >
           {seasonConfig.particleType === 'snowflake' && '❄'}
-          {seasonConfig.particleType === 'petal' && '🌸'}
           {seasonConfig.particleType === 'firefly' && '✨'}
-          {seasonConfig.particleType === 'leaf' && '🍂'}
+          {seasonConfig.particleType === 'leaf' && '🌪'}
+          {seasonConfig.particleType === 'heart' && '❤'}
+          {seasonConfig.particleType === 'ghost' && '👻'}
+          {seasonConfig.particleType === 'confetti' && ['🎉', '🎊', '✨'][Math.floor(Math.random() * 3)]}
         </div>
       ))}
     </div>

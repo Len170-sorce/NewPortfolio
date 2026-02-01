@@ -10,98 +10,37 @@
   overflow: hidden;
 }
 
-/* Winter - Snow */
+/* Winter (Cool Dry Season Dec-Feb) - Fireflies */
 .seasonal-winter {
-  background: linear-gradient(180deg, rgba(200, 220, 240, 0.02) 0%, rgba(150, 180, 220, 0.01) 100%);
+  background: linear-gradient(180deg, rgba(100, 180, 255, 0.01) 0%, rgba(100, 150, 200, 0.005) 100%);
 }
 
-.seasonal-winter .particle.snowflake {
-  animation: snowFall linear infinite;
-  font-size: 1.5rem;
-  opacity: 0.15 !important;
-}
-
-@keyframes snowFall {
-  0% {
-    transform: translateY(-10vh) translateX(0);
-    opacity: 0.15;
-  }
-  50% {
-    opacity: 0.12;
-  }
-  100% {
-    transform: translateY(110vh) translateX(100px);
-    opacity: 0;
-  }
-}
-
-/* Spring - Flower Petals */
-.seasonal-spring {
-  background: linear-gradient(180deg, rgba(255, 182, 193, 0.01) 0%, rgba(255, 192, 203, 0.005) 100%);
-}
-
-.seasonal-spring .particle.petal {
-  animation: petalFall 15s linear infinite;
-  font-size: 1.2rem;
-  opacity: 0.12 !important;
-}
-
-@keyframes petalFall {
-  0% {
-    transform: translateY(-10vh) rotate(0deg);
-    opacity: 0.12;
-  }
-  50% {
-    opacity: 0.1;
-    transform: translateY(50vh) rotate(180deg);
-  }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-/* Summer - Fireflies */
-.seasonal-summer {
-  background: linear-gradient(180deg, rgba(255, 215, 0, 0.01) 0%, rgba(255, 200, 0, 0.005) 100%);
-}
-
-.seasonal-summer .particle.firefly {
+.seasonal-winter .particle.firefly {
   animation: fireflyFloat 12s ease-in-out infinite;
   font-size: 0.8rem;
   opacity: 0.1 !important;
 }
 
-@keyframes fireflyFloat {
-  0% {
-    transform: translateY(100vh) translateX(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.1;
-  }
-  50% {
-    transform: translateY(50vh) translateX(80px);
-    opacity: 0.08;
-  }
-  90% {
-    opacity: 0.1;
-  }
-  100% {
-    transform: translateY(-10vh) translateX(0);
-    opacity: 0;
-  }
+/* Summer (Hot Dry Season Mar-May) - Fireflies */
+.seasonal-summer {
+  background: linear-gradient(180deg, rgba(255, 200, 100, 0.01) 0%, rgba(255, 180, 80, 0.005) 100%);
 }
 
-/* Autumn - Falling Leaves */
+.seasonal-summer .particle.firefly {
+  animation: fireflyFloat 12s ease-in-out infinite;
+  font-size: 0.8rem;
+  opacity: 0.12 !important;
+}
+
+/* Autumn (Rainy Season Jun-Nov) - Wind and Leaves */
 .seasonal-autumn {
-  background: linear-gradient(180deg, rgba(210, 140, 80, 0.02) 0%, rgba(200, 120, 60, 0.01) 100%);
+  background: linear-gradient(180deg, rgba(100, 150, 120, 0.02) 0%, rgba(80, 120, 100, 0.01) 100%);
 }
 
 .seasonal-autumn .particle.leaf {
-  animation: leafFall 16s linear infinite;
-  font-size: 1.3rem;
-  opacity: 0.14 !important;
+  animation: windBlowLeaf 14s ease-in-out infinite;
+  font-size: 1.4rem;
+  opacity: 0.16 !important;
 }
 
 @keyframes leafFall {
@@ -125,11 +64,161 @@
   }
 }
 
+@keyframes windBlowLeaf {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) translateX(0);
+    opacity: 0.16;
+  }
+  25% {
+    transform: translateY(25vh) rotate(90deg) translateX(80px);
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(-50px);
+    opacity: 0.13;
+  }
+  75% {
+    transform: translateY(75vh) rotate(270deg) translateX(100px);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg) translateX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes fireflyFloat {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateY(50vh) translateX(80px);
+    opacity: 0.08;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(0);
+    opacity: 0;
+  }
+}
+
 /* Particle base styles */
 .particle {
   position: absolute;
   top: 0;
   will-change: transform;
+}
+
+/* Valentine's Day - Hearts */
+.seasonal-valentines {
+  background: linear-gradient(180deg, rgba(255, 182, 193, 0.02) 0%, rgba(255, 192, 203, 0.01) 100%);
+}
+
+.seasonal-valentines .particle.heart {
+  animation: heartFall 12s ease-in-out infinite;
+  font-size: 1.2rem;
+  opacity: 0.15 !important;
+}
+
+@keyframes heartFall {
+  0% {
+    transform: translateY(-10vh) scale(0.8) rotate(0deg);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(50vh) scale(1) rotate(180deg);
+    opacity: 0.12;
+  }
+  100% {
+    transform: translateY(110vh) scale(0.8) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Halloween - Ghosts */
+.seasonal-halloween {
+  background: linear-gradient(180deg, rgba(100, 50, 100, 0.02) 0%, rgba(80, 30, 80, 0.01) 100%);
+}
+
+.seasonal-halloween .particle.ghost {
+  animation: ghostFloat 14s ease-in-out infinite;
+  font-size: 1.3rem;
+  opacity: 0.18 !important;
+}
+
+@keyframes ghostFloat {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.18;
+  }
+  50% {
+    transform: translateY(50vh) translateX(80px);
+    opacity: 0.14;
+  }
+  90% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(0);
+    opacity: 0;
+  }
+}
+
+/* Christmas - Snowflakes */
+.seasonal-christmas {
+  background: linear-gradient(180deg, rgba(200, 220, 240, 0.02) 0%, rgba(150, 180, 220, 0.01) 100%);
+}
+
+.seasonal-christmas .particle.snowflake {
+  animation: christmasSnowFall linear infinite;
+  font-size: 1.5rem;
+  opacity: 0.16 !important;
+}
+
+@keyframes christmasSnowFall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0.16;
+  }
+  50% {
+    opacity: 0.13;
+  }
+  100% {
+    transform: translateY(110vh) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* New Year - Confetti */
+.seasonal-newyear {
+  background: linear-gradient(180deg, rgba(255, 215, 0, 0.02) 0%, rgba(200, 150, 255, 0.01) 100%);
+}
+
+.seasonal-newyear .particle.confetti {
+  animation: confettiFall 10s ease-in infinite;
+  font-size: 1.1rem;
+  opacity: 0.2 !important;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
 }
 
 /* Mobile adjustments */
@@ -142,4 +231,3 @@
     font-size: 0.8em !important;
   }
 }
-
