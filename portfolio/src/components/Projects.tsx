@@ -50,7 +50,7 @@ export default function Projects() {
       title: 'Baranggay Management System',
       description: 'Designed to streamline local governance, the Barangay Management System manages barangay records using a MySQL database with real-time updates and full CRUD functionality.',
       technologies: ['MySQL','HTML', 'CSS', 'JavaScript', 'CRUD'],
-      image: '💾',
+      image: '/src/assets/BMS-MK.png',
     },
     {
       title: 'Parfum Perspective',

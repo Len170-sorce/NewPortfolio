@@ -90,22 +90,23 @@ section#contact {
 .footer {
   background: rgba(15, 20, 25, 0.8);
   backdrop-filter: blur(10px);
-  padding: 30px 20px;
+  padding: 15px 20px;
   text-align: center;
   border-top: 1px solid rgba(100, 181, 246, 0.2);
   color: var(--text-light);
+  font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
   .footer {
-    padding: 20px 15px;
-    font-size: 0.9rem;
+    padding: 12px 15px;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
   .footer {
-    padding: 15px 10px;
-    font-size: 0.85rem;
+    padding: 10px 10px;
+    font-size: 0.8rem;
   }
 }

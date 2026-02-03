@@ -56,8 +56,18 @@ export default function Contact() {
   }
 
   return (
-    <div ref={containerRef} className={`contact-container scroll-animate ${containerVisible ? 'is-visible' : ''}`}>
-      {/* Geometric Shapes */}
+    <div ref={containerRef} className={`contact-container scroll-animate ${containerVisible ? 'is-visible' : ''}`}>      {/* Pixelated Tree */}
+      <div className="pixelated-tree">
+        <div className="tree-trunk"></div>
+        <div className="tree-foliage foliage-1"></div>
+        <div className="tree-foliage foliage-2"></div>
+        <div className="tree-foliage foliage-3"></div>
+        <div className="tree-leaves-container">
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div key={i} className="falling-leaf" style={{ '--leaf-delay': `${i * 0.4}s` } as React.CSSProperties}></div>
+          ))}
+        </div>
+      </div>      {/* Geometric Shapes */}
       <div className="contact-shape circle-1"></div>
       <div className="contact-shape circle-2"></div>
       <div className="contact-shape square"></div>
