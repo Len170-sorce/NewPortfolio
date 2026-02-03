@@ -56,18 +56,8 @@ export default function Contact() {
   }
 
   return (
-    <div ref={containerRef} className={`contact-container scroll-animate ${containerVisible ? 'is-visible' : ''}`}>      {/* Pixelated Tree */}
-      <div className="pixelated-tree">
-        <div className="tree-trunk"></div>
-        <div className="tree-foliage foliage-1"></div>
-        <div className="tree-foliage foliage-2"></div>
-        <div className="tree-foliage foliage-3"></div>
-        <div className="tree-leaves-container">
-          {Array.from({ length: 15 }).map((_, i) => (
-            <div key={i} className="falling-leaf" style={{ '--leaf-delay': `${i * 0.4}s` } as React.CSSProperties}></div>
-          ))}
-        </div>
-      </div>      {/* Geometric Shapes */}
+    <div ref={containerRef} className={`contact-container scroll-animate ${containerVisible ? 'is-visible' : ''}`}>
+      {/* Geometric Shapes */}
       <div className="contact-shape circle-1"></div>
       <div className="contact-shape circle-2"></div>
       <div className="contact-shape square"></div>
@@ -146,15 +136,16 @@ export default function Contact() {
                   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link" title="LinkedIn">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link" title="Facebook">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"></path>
-                  <circle cx="4" cy="4" r="2"></circle>
+                  <path d="M18 2h-3a6 6 0 0 0-6 6v3H7v4h2v8h4v-8h3l1-4h-4V8a1 1 0 0 1 1-1h3z"></path>
                 </svg>
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link" title="Twitter">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-link" title="Instagram">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2s9 5 20 0a10.66 10.66 0 0 1-10-5.5"></path>
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <circle cx="17.5" cy="6.5" r="1.5"></circle>
                 </svg>
               </a>
             </div>
